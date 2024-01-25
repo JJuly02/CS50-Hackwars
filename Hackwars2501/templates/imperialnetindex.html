@@ -1,0 +1,31 @@
+{% extends 'layoutimperial.html' %}
+
+{% block content %}
+    <div class="alert alert-info" role="alert">
+        To view your main page, you must register with imperial numbers.
+    </div>
+
+    <div class="row">
+        <!-- Emperor Palpatine Box -->
+        <div class="col-md-6">
+            <div class="card">
+                <img src="{{ url_for('static', filename='images/1.jpg') }}" alt="Emperor Palpatine" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Emperor Palpatine</h5>
+                    <a href="/imperialnet/Emperor-Palpatine" class="btn btn-primary">View Profile</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Darth Vader Box -->
+        <div class="col-md-6">
+            <div class="card">
+                <img src="{{ url_for('static', filename='images/2.jpg') }}" alt="Darth Vader" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Darth Vader</h5>
+                    <a href="/imperialnet/Darth-Vader" class="btn btn-primary">View Profile</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
