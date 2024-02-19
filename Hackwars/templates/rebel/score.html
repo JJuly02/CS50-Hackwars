@@ -1,0 +1,14 @@
+{% extends 'rebel/layout.html' %}
+
+{% block content %}
+<div class="container scores-container">
+    <h2 class="scores-title">Rebel {{ username }} Scores</h2>
+    <div class="scores-list">
+        <div class="score-item">Dark-Holocron stage: <span class="score-value">{{ holocronstage }}</span></div>
+        <div class="score-item">Holocron Score: <span class="score-value">{{ holoscore }}</span></div>
+        <div class="score-item">Dark Archive Score: <span class="score-value">{{ archscore }}</span></div>
+        <div class="score-item">ImperialNet Score: <span class="score-value">{{ imperialscore }}</span></div>
+        <div class="score-item">Total Score: <span class="score-value">{{ total_score }}</span></div>
+    </div>
+</div>
+{% endblock %}

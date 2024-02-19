@@ -1,0 +1,32 @@
+{% extends 'imperialnet/layoutimperial.html' %}
+
+{% block content %}
+    <div class="profile-card">
+        <!-- Profile Image -->
+        <div class="profile-image text-center">
+            <img src="{{ url_for('static', filename='images/' ~ user.id ~ '.jpg') }}" alt="{{ user.name }}" class="profile-img">
+        </div>
+
+        <!-- Profile Information -->
+        <h2 class="profile-name">{{ user.name }}</h2>
+        <h3 class="profile-alias">{{ user.alias }}</h3>
+        <p class="profile-summary">{{ user.summary }}</p>
+
+        <!-- Skills -->
+        <h4 class="section-header">Skills</h4>
+        <ul class="profile-list">
+            {% for skill in skills %}
+                <li class="profile-list-item">{{ skill.skill }}</li>
+            {% endfor %}
+        </ul>
+
+        <!-- Job History -->
+        <h4 class="section-header">Job History</h4>
+        {% for job in jobs %}
+            <div class="job-section">
+                <h5 class="job-title">{{ job.title }}</h5>
+                <p class="job-description">{{ job.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'imperialnet/layoutimperial.html' %}
+
+{% block content %}
+    <div class="alert alert-info" role="alert">
+        To view your main page, you must register with imperial numbers.
+    </div>
+
+    <div class="text-center">
+        <h3 class="text-white"> Look up our Galactic Leaders! </h3>
+    </div>
+    <div class="row">
+        <!-- Emperor Palpatine Box -->
+        <a href="/imperialnet/Emperor-Palpatine" class="col-md-12">
+            <div class="card">
+                <img src="{{ url_for('static', filename='images/1.jpg') }}" alt="Emperor Palpatine" class="profileindex-image">
+                <div class="card-body">
+                    <h5 class="card-title">Emperor Palpatine</h5>
+                </div>
+            </div>
+        </a>
+
+        <!-- Darth Vader Box -->
+        <a href="/imperialnet/Darth-Vader" class="col-md-6">
+            <div class="card">
+                <img src="{{ url_for('static', filename='images/2.jpg') }}" alt="Darth Vader" class="profileindex-image">
+                <div class="card-body">
+                    <h5 class="card-title">Darth Vader</h5>
+                </div>
+            </div>
+        </a>
+        <a href="/imperialnet/Grand-Moff-Tarkin" class="col-md-6">
+            <div class="card">
+                <img src="{{ url_for('static', filename='images/3.jpg') }}" alt="Emperor Palpatine" class="profileindex-image">
+                <div class="card-body">
+                    <h5 class="card-title">Grand Moff Tarkin</h5>
+                </div>
+            </div>
+        </a>
+        <a href="/imperialnet/Admiral-Thrawn" class="col-md-6">
+            <div class="card">
+                <img src="{{ url_for('static', filename='images/4.jpg') }}" alt="Emperor Palpatine" class="profileindex-image">
+                <div class="card-body">
+                    <h5 class="card-title">Admiral Thrawn</h5>
+                </div>
+            </div>
+        </a>
+        <a href="/imperialnet/Colonel-Yularen" class="col-md-6">
+            <div class="card">
+                <img src="{{ url_for('static', filename='images/5.jpg') }}" alt="Emperor Palpatine" class="profileindex-image">
+                <div class="card-body">
+                    <h5 class="card-title">Colonel Yularen</h5>
+                </div>
+            </div>
+        </a>
+    </div>
+
+
+{% endblock %}

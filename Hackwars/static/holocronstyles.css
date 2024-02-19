@@ -1,0 +1,36 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    color: white;
+    background-color: #000;
+}
+.background {
+    background-image: url("/static/images/holo.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.holocron-content {
+    max-width: 900px;
+    text-align: center;
+}
+.holocron-link {
+    color: #FFD700;
+}
+.holocron-link:hover {
+    color: #FFD700;
+    text-decoration: none;
+}
+
+.index-card {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    margin-bottom: 30px;
+    overflow: hidden;
+    height: auto;
+    color: #FFD700;
+}
+
