@@ -1,0 +1,28 @@
+{% extends 'rebel/layout.html' %}
+
+{% block content %}
+<div class="background">
+    <div class="container">
+        <div class="index-card">
+            <h1 class="challenge-title">{{ message }}</h1>
+            <video id="bruteForceVideo" width="100%" autoplay muted>
+                <source src="{{ url_for('static', filename='images/bruteforce.mp4') }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+</div>
+
+<script>
+    setTimeout(function() {
+        const success = {{ success | tojson }};
+        if (success) {
+            alert("Success! You hacked the Emperor's password!");
+            window.location.href = "/darkarchive";
+        } else {
+            alert("Brute force attempt failed. The keywords are not correct.");
+            window.location.href = "/BruteForce";
+        }
+    }, 10000); // 10 seconds delay
+</script>
+{% endblock %}

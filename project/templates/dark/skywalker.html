@@ -1,0 +1,28 @@
+{% extends 'dark/layout.html' %}
+
+{% block content %}
+    <div class="container d-flex flex-column align-items-center justify-content-center container-fluid background p-0">
+        <div class="index-card text-center">
+            <h1>Welcome to the Skywalker Chronicles</h1>
+            <p>Explore the journey of Anakin Skywalker, from a promising young Padawan to his eventual fall to the dark side as Darth Vader.</p>
+            <div style="margin: 20px 0;">
+                <img src="{{ url_for('static', filename='images/young_anakin.jpg') }}" alt="Young Anakin Skywalker" style="max-width: 50%; height: auto; border-radius: 10px;">
+                <p style="color: rgba(0, 0, 0, 1)">"IMP-PH4NT0MMEN4C3"</p>
+            </div>
+        </div>
+
+        <div class="index-card text-center">
+            <h2>The Promise of the Chosen One</h2>
+            <p>Anakin Skywalker, the galaxy's only hope, was believed to be the Chosen One to bring balance to the Force. His journey from a young padawan to a legend was foretold in ancient prophecies.</p>
+
+            <h2>Trials and Tribulations</h2>
+            <p>Training under Obi-Wan Kenobi, Anakin faced countless challenges. "This is where the fun begins," as he carved his path towards becoming a Jedi Knight, destroying battle droids and facing inner demons. He was one of the grates pilots galaxy has ever seen.</p>
+
+            <h2>The Turn to the Dark Side</h2>
+            <p>Seduced by dark side of the force to save his loved ones, Anakin's fall was the galaxy's greatest tragedy, transforming him into Darth Vader, a figure of fear and power.</p>
+
+            <h2>Legacy</h2>
+            <p>The saga of Anakin Skywalker is a story of love, familly and redemption. His journey, marked by battles, love, and a final act of salvation, fulfills his destiny as the Chosen One, proving that "The Force will be with you, always."</p>
+        </div>
+    </div>
+{% endblock %}
