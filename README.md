@@ -1,14 +1,10 @@
 # HackWars: The Vulnerabilities Strike Back
+#### Video Demo:  <URL HERE>
 
-## Harvard CS50 Final Project
+#### Description:
+Welcome on an epic journey in **HACKWARS: THE VULNERABILITIES STRIKE BACK** web application in flask where the goal is to teach about the cybersecurity. This app was created as an final project for Harvard's CS50 Introduction to Computer Science. It was also created as an Web CTF app challenge for students science club on my university Akademia WIT in Warsaw.
 
-This project is developed as a final assignment for Harvard University's CS50 course. It is a web application designed to introduce and educate users on the concepts of cybersecurity through an interactive and engaging platform. Players will go on a journey to protect digital galaxy from cybersecurity threats, learning about various vulnerabilities along the way.
-
-### Introduction
-
-Welcome on an epic journey in **HACKWARS: THE VULNERABILITIES STRIKE BACK**, Episode I: The Cyber Menace. In this digital saga, the Digital Republic faces threats from the nefarious Dark Hackers. These adversaries have identified a critical flaw in the Republic's defenses, jeopardizing the safety of systems across the galaxy.
-
-Rise as a Code Jedi, armed with cybersecurity knowledge and skills, to challenge the dark forces of cyber threats. Your quest is to protect the Digital Republic and maintain the balance within the network.
+This simple flask Web app presents the user with a handful of challenges in which they must try their best to succeed and hack the website. The main goal is to go into Emperor’s darkarchive page. User will collect on their journey flags which should be used on **/score** page where as they get more flags they will gather more points. For the Science club there will be an option to send me a hash to verify the authenticity of their score.
 
 #### Your Mission
 
