@@ -1,5 +1,5 @@
 # HackWars: The Vulnerabilities Strike Back
-#### Video Demo:  <URL HERE>
+#### Video Demo:  <[URL HERE](https://youtu.be/GNPCI4utMjk)>
 
 #### Description:
 Welcome on an epic journey in **HACKWARS: THE VULNERABILITIES STRIKE BACK** web application in flask where the goal is to teach about the cybersecurity. This app was created as an final project for Harvard's CS50 Introduction to Computer Science. It was also created as an Web CTF app challenge for students science club on my university Akademia WIT in Warsaw.
@@ -36,3 +36,6 @@ Players submit their scores through a special form on the site to see how they r
 Prepare for an adventure filled with coding challenges, strategic thinking, and the thrill of cyber combat. As you progress, you'll encounter various hacking techniques designed to test your skills and adaptability.
 
 **May the Secure Code be with you...**
+
+##### Important notes
+I used Ai to help with writing long stories as well as general looks and styles of the page.
