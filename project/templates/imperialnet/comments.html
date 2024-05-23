@@ -1,0 +1,26 @@
+{% extends 'imperialnet/layoutimperial.html' %}
+
+{% block content %}
+<div class="container">
+    <h2 class="text-white">Imperial Network Comments</h2>
+    <form action="{{ url_for('imperialcomments') }}" method="POST">
+        <div class="form-group">
+            <textarea class="form-control" name="comment" placeholder="Leave a comment..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Comment</button>
+    </form>
+    <div class="comments-section">
+        {% for comment in comments %}
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ comment.author }}</h5>
+                <p class="card-text" style="word-wrap: break-word;">{{ comment.text | safe }}</p>
+                {% if isflaged %}
+                <!-- [Potential XSS detected: IMP-IMP3R1ALXSS] -->
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

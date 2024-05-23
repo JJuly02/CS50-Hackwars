@@ -1,0 +1,14 @@
+{% extends "darkarchive/layout.html" %}
+
+{% block content %}
+<div class="container holocron-content">
+    <h1>Memes</h1>
+    <div class="photo-grid">
+        {% for image in images %}
+            <div class="photo">
+                <img src="{{ image }}" alt="Palpatine Meme">
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

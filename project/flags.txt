@@ -1,0 +1,13 @@
+-------------------"IMP-4DM1NP4N3L", --- admin panel
+-------------------"IMP-BROK3NKONTROL", --- dostanie sie do admin panel poprzez broken acces control
+-------------------"IMP-IMP3R1ALXSS", -- wykonanie xss na stronie
+-------------------"IMP-4CC3SS-6R4N73D", --- darkarchive jak sie wchodzi
+-------------------"IMP-1MP3R1AL", --- flaga imperial ukryta w stronie w komentarzu
+-------------------"IMP-M4Y-7H3-F0RC3-B3-W17HY0", ----final flag na samym koncu
+-------------------"IMP-PH4NT0MMEN4C3", --- anakin skywalker side
+-------------------"IMP-17S-4-TR4P!", --- przekierowuje do youtube na rickrolla
+-------------------"IMP-R3DS4B3R", --- imperialnet
+-------------------"IMP-4DM1NCON7R0L" --- panel gwiazdy smierci
+-------------------"IMP-R3B3L10N" ---- strona rebel
+
+zapisać lokalizacje

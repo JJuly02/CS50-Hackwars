@@ -1,0 +1,84 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    color: white;
+    background-color: #000;
+    font-family: 'Arial', sans-serif;
+    overflow-y: auto; /* Włącza przewijanie */
+}
+
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Ustawia tło za zawartością */
+    background-image: url("/static/images/holo.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.holocron-content {
+    max-width: 900px;
+    text-align: center;
+}
+
+.holocron-link, .holocron-link:hover, .holocron-link:focus {
+    color: #FFD700;
+    text-decoration: none;
+}
+
+.index-card {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    margin-bottom: 30px;
+    overflow: hidden;
+    height: auto;
+    color: #FFD700;
+}
+
+p {
+    color: white;
+}
+
+.holocron-link:hover, .holocron-link:focus {
+    transform: scale(1.05);
+    color: #FF6347;
+}
+
+.btn, .btn:hover {
+    background-color: #D50000; /* Domyślny kolor */
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #B71C1C; /* Kolor po najechaniu */
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+li {
+    background-color: rgba(255, 0, 0, 0.2);
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Dodanie animacji fadeIn */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.container {
+    animation: fadeIn 1s ease-in-out;
+}
+/* AI helped with styles and javascripts on the website as well as in some cases just looks */

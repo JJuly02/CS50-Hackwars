@@ -1,0 +1,181 @@
+.background {
+    background-image: url("/static/images/rebel.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.nav-link {
+    color: white !important;
+    text-decoration: none !important;
+}
+
+.nav-link:hover {
+    color: green !important;
+    text-decoration: none !important;
+}
+
+a:hover {
+    color: green !important;
+    text-decoration: none !important;
+}
+
+.challenge-title {
+    font-family: 'Star Jedi', Arial, sans-serif;
+    color: #FFD700;
+    text-shadow: 3px 3px #000;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.index-card {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    margin-bottom: 30px;
+    color: #d9d9d9;
+    overflow: hidden;
+    height: auto;
+}
+
+
+/* Star Wars Crawl Effect */
+.crawl-container {
+    position: relative;
+    perspective: 500px;
+    overflow: hidden;
+    height: 80vh;
+}
+
+.crawl-content {
+    position: absolute;
+    top: 100%;
+    transform-origin: 50% 100%;
+    animation: crawl 150s linear infinite;
+}
+
+@keyframes crawl {
+    0% {
+        top: 100%;
+        transform: rotateX(10deg)  translateZ(0);
+    }
+    100% {
+        top: -8000px;
+        transform: rotateX(15deg) translateZ(-2500px);
+    }
+}
+
+.crawl-text {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: yellow;
+    text-align: center;
+    font-size: 60px;
+    width: 150%;
+    margin: 0 auto;
+    padding-top: 50px;
+    margin-left: -25%;
+}
+
+.crawl-title h1 {
+    font-size: 220px;
+    margin: 0;
+    line-height: 1;
+}
+
+.scores-container {
+    text-align: center;
+    padding: 40px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    color: #FFD700;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    margin-top: 50px;
+}
+
+.scores-title {
+    font-family: 'Star Jedi', Arial, sans-serif;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    text-shadow: 3px 3px #000;
+}
+
+.scores-list {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.2rem;
+}
+
+.score-item {
+    margin: 15px 0;
+}
+
+.score-value {
+    font-weight: bold;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-in {
+    animation: fadeIn 2s ease-in;
+}
+.btn-primary {
+    background-color: #006400; /* Ciemny zielony, aby pasował do motywu */
+    border-color: #004d00; /* Jeszcze ciemniejszy zielony dla obramowania */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.btn-primary:hover {
+    background-color: #004d00; /* Jaśniejszy zielony przy najechaniu */
+    border-color: #003300;
+}
+
+.form-control {
+    background-color: #f3f3f3;
+    color: #333;
+    border-radius: 0.25rem;
+    border: 1px solid #ced4da;
+}
+
+.form-group label {
+    color: #FFD700; /* Złoty kolor etykiet, pasuje do motywu */
+    font-weight: bold;
+}
+
+/* Dodanie cienia i zaokrąglenia do listy flag */
+ul {
+    list-style-type: none; /* Usunięcie domyślnych znaczników listy */
+    padding: 0;
+    text-align: left;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    margin-top: 20px;
+}
+
+li {
+    line-height: 2.5; /* Zwiększenie odstępu między flagami */
+    color: #FFD700; /* Złoty kolor tekstu */
+}
+
+/* Poprawienie wyglądu formularza */
+.form-group {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    margin-bottom: 30px;
+}
+
+/* Ulepszenie ogólnego wyglądu strony */
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    animation: fadeIn 1s ease-in-out;
+}
+/* AI helped with styles and javascripts on the website as well as in some cases just looks */

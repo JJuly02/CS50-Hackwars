@@ -1,0 +1,53 @@
+{% extends 'dark/layout.html' %}
+
+{% block content %}
+<div class="container d-flex flex-column align-items-center justify-content-center" style="min-height: 100vh;">
+    <div class="index-card text-center">
+
+        {% if is_sith_lord %}
+        <h1>Welcome Sith Lord {{ username }}</h1>
+        <p>There is a more intriguing page for you, the <a href="/darkholocron/sith">Sith Page</a>.</p>
+
+        <h1>Galactic Empire Archives</h1>
+        <p>Welcome to the Galactic Empire Archives, the largest repository of knowledge about the most powerful government that has ever existed in the history of the galaxy. Here you will find information about our history, technology, culture, and military structures.</p>
+
+        <h2>History of the Galactic Empire</h2>
+        <p>The Galactic Empire, founded by Emperor Palpatine from the ashes of the Republic, brought order and stabilization to the galaxy. This section describes its rise to power, key moments, and its legacy.</p>
+
+        <h2>Technology of the Empire</h2>
+        <p>The technological advantage of the Empire is undeniable. From the Death Stars, through advanced star destroyers, to innovations in the field of space combat - everything you need to know about the technological power of the Empire.</p>
+
+        <h2>Military Structures</h2>
+        <p>The Empire is renowned for its military power. Learn about the organization and tactics of the imperial army, fleet, and also elite units of Stormtroopers and Inquisitors, maintaining order in the galaxy.</p>
+
+        <h2>Culture and Society</h2>
+        <p>The culture of the Empire is as diverse as the galaxy it rules. This section explores the daily lives of citizens, their beliefs, art, and the importance of order and discipline in maintaining harmony.</p>
+
+        <h2>Galactic Economy</h2>
+        <p>The Empire not only maintains order but also the prosperity of the galaxy. Here you will find an analysis of the imperial economy, interstellar trade, and the role that the Empire plays in maintaining and promoting prosperity.</p>
+            {% if is_skywalker %}
+            <p>Only Skywalker can see this page <a href="/darkholocron/skywalker">Sith Page</a>.</p>
+            {% endif %}
+        {% else %}
+
+        <h1>Galactic Empire Archives</h1>
+        <p>Welcome to the Galactic Empire Archives, the largest repository of knowledge about the most powerful government that has ever existed in the history of the galaxy. Here you will find information about our history, technology, culture, and military structures.</p>
+
+        <h2>History of the Galactic Empire</h2>
+        <p>The Galactic Empire, founded by Emperor Palpatine from the ashes of the Republic, brought order and stabilization to the galaxy. This section describes its rise to power, key moments, and its legacy.</p>
+
+        <h2>Technology of the Empire</h2>
+        <p>The technological advantage of the Empire is undeniable. From the Death Stars, through advanced star destroyers, to innovations in the field of space combat - everything you need to know about the technological power of the Empire.</p>
+
+        <h2>Military Structures</h2>
+        <p>The Empire is renowned for its military power. Learn about the organization and tactics of the imperial army, fleet, and also elite units of Stormtroopers and Inquisitors, maintaining order in the galaxy.</p>
+
+        <h2>Culture and Society</h2>
+        <p>The culture of the Empire is as diverse as the galaxy it rules. This section explores the daily lives of citizens, their beliefs, art, and the importance of order and discipline in maintaining harmony.</p>
+
+        <h2>Galactic Economy</h2>
+        <p>The Empire not only maintains order but also the prosperity of the galaxy. Here you will find an analysis of the imperial economy, interstellar trade, and the role that the Empire plays in maintaining and promoting prosperity.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

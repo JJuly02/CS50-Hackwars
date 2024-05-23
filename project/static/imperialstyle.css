@@ -1,0 +1,101 @@
+.profile, .card, .profile-card {
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border-radius: 10px;
+}
+
+.card, .profile-card {
+    text-align: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.card:hover, .profile-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.card:hover .card-title, a:hover, .nav-link:hover {
+    color: red;
+    text-decoration: underline;
+}
+
+a, .nav-link {
+    color: white;
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+.profileindex-image, .profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid white;
+    object-fit: cover;
+    display: block;
+    margin: auto;
+}
+
+.navbar-logo {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+
+.imperial-background {
+    background-image: url("/static/images/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.profile-name, .profile-alias, .profile-summary, .section-header, .profile-list-item, .job-title, .job-description {
+    transition: color 0.3s ease;
+}
+
+.section-header {
+    border-bottom: 1px solid #555;
+    padding-bottom: 5px;
+}
+
+.profile-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.btn-primary {
+    background-color: #4e4e4e;
+    border-color: #333;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #333;
+    border-color: #222;
+}
+
+.card-body {
+    padding: 2rem;
+}
+/* Globalne ustawienia fontu i podstawowej animacji */
+body {
+    font-family: 'Arial', sans-serif;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Stylizacja kart z efektem fadeIn */
+.card {
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Stylizacja alertu z efektem fadeIn dla spójności */
+.alert {
+    animation: fadeIn 1s ease-in-out;
+}
+/* AI helped with styles and javascripts on the website as well as in some cases just looks */
