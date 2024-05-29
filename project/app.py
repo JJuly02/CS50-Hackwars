@@ -63,7 +63,9 @@ def login_archive(n):
     sec_quer = db.execute("SELECT archivestage FROM users WHERE id = ?", (user_id,))
     archivestage = sec_quer[0]["archivestage"]
     print(archivestage)
-    if archivestage < n:
+    if n == 0 and archivestage == 0:
+        return False
+    elif archivestage < n:
         return False
 
 
