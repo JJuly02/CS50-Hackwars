@@ -1,9 +1,4 @@
-os
-re
-cs50
-flask
-flask_session
-time
-werkzeug.security
-itertools
-functools
+cs50==9.3.4
+flask==2.0.3
+flask-session==0.4.0
+werkzeug==2.0.3
