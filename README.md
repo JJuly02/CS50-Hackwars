@@ -16,5 +16,12 @@ This simple flask Web app presents the user with a handful of challenges in whic
   #### 4. Open browser
   Open your browser, typicaly app will be hosted on http://127.0.0.1:5000
   #### 4. Register
+  Input your credentials
+  FOR WIT STUDENTS - W username podawajcie swoje inicjały i numer albumu example: Jan Kowalski NR.albumu 12345 => JK12345 (Nie muszę chyba tłumaczyć żeby nie podawać swojego  hasla do UBI
+  ![image](https://github.com/JJuly02/CS50-Hackwars/assets/129384105/28bbeb15-dab3-430a-b231-e6e9813271c3)
+  #### 4. Login 
+  Go to login page and use your credentials 
+  ![image](https://github.com/JJuly02/CS50-Hackwars/assets/129384105/b89d66ea-d5a7-4e40-84ac-ae111a907bba)
+
 
 
