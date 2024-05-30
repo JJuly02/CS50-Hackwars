@@ -10,9 +10,9 @@ This simple flask Web app presents the user with a handful of challenges in whic
   #### 1. Instal app
   Open code editor of your choice and downolad this app.
   #### 2. Instal requirements 
-  Move to project directory and then run command '''bash pip install -r requirements.txt''' (You have to install pip if not yet done). 
+  Move to project directory and then run command **pip install -r requirements.txt** (You have to install pip if not yet done). 
   #### 3. Run app
-  Run app being in '''/project''' directory by friting command '''flask run''' or '''python app.py''' (You have to have python installed).
+  Run app being in **/project** directory by friting command **flask run** or **python app.py** (You have to have python installed).
   #### 4. Open browser
   Open your browser, typicaly app will be hosted on http://127.0.0.1:5000
   #### 5. Register
