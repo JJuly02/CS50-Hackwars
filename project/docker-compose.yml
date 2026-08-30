@@ -1,0 +1,22 @@
+# HackWars web app - a single container.
+#
+# Published on host port 80 (with 8001 as a fallback), both mapping to the
+# container's :8000. Running locally, http://localhost:8000 works too. To serve
+# it over HTTPS, terminate TLS (e.g. Caddy with an auto Let's Encrypt cert) in
+# front of :8000.
+#
+# SECRET_KEY must be a real random value - sessions are signed cookies with no
+# server-side check. It comes from the gitignored .env - see .env.example.
+#
+# restart: unless-stopped so a host reboot brings the app back by itself
+# instead of leaving a dead port.
+
+services:
+  app:
+    build: .
+    ports:
+      - "80:8000"
+      - "8001:8000"
+    restart: unless-stopped
+    environment:
+      SECRET_KEY: ${SECRET_KEY:?set in .env, see .env.example}

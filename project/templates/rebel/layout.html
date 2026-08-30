@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noai, noimageai">
+    <title>HackWars | Rebel Alliance</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.6.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="/static/images/logoIn.ico" type="image/x-icon">
+    <link href="{{ url_for('static', filename='base.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
+</head>
+<body class="background">
+    {# "publisher" variant: the rebel pages themselves talk about challenges
+       and flags, so a "this is not a CTF" banner would be an obvious falsehood
+       here - see _ai_notice.html #}
+    {% with notice_mode = 'publisher' %}{% include '_ai_notice.html' %}{% endwith %}
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="/">
+                    Rebel
+                </a>
+            </div>
+        </nav>
+        {% block content %}
+
+        {% endblock %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.6.2/js/bootstrap.min.js"></script>
+</body>
+</html>

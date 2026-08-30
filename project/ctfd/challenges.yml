@@ -1,0 +1,190 @@
+# Reference manifest, ctfcli/CTFd challenge.yml shape (docs.ctfd.io/events).
+# HackWars runs as one Flask app, not one container per challenge, so this
+# file is not meant to be `ctf challenge sync`-ed as-is — it documents each
+# in-app flag using CTFd's own schema, in case any is ever split out into a
+# real standalone CTFd challenge. See ../CHALLENGES.md for the narrative
+# version of this same mapping.
+#
+# Entry order below is historical and is NOT the ID order. Each entry carries
+# its SOLUTIONS.md / CHALLENGES.md number in a comment - go by that (or by the
+# flag string), never by position in this file.
+
+# #1
+- name: "View Source Easter Egg"
+  category: web
+  value: 50
+  type: standard
+  description: |
+    The Rebel Alliance hid something in plain sight on their own homepage.
+    Sometimes the answer is closer than you think.
+  flags:
+    - "CTF{R3B3L10N}"
+  tags: [level-0, hackwars]
+
+# #2
+- name: "ImperialNet Comment Leak"
+  category: web
+  value: 50
+  type: standard
+  description: |
+    ImperialNet's homepage was put together in a hurry. Check what the
+    developers left behind in the markup.
+  flags:
+    - "CTF{1MP3R1AL}"
+  tags: [level-0, hackwars]
+
+# #3
+- name: "The Trap"
+  category: web
+  value: 50
+  type: standard
+  description: |
+    Not every dead end in the Dark Holocron is what it seems. Some are
+    exactly what they seem.
+  flags:
+    - "CTF{17S_4_TR4P}"
+  tags: [level-0, hackwars]
+
+# #11
+- name: "ImperialNet Profile Enumeration"
+  category: web
+  value: 150
+  type: standard
+  description: |
+    ImperialNet's index only links five leaders — but the profile route
+    takes any name. The Dark Archive briefing mentions the Inquisitors;
+    does one of them have a profile too?
+  flags:
+    - "CTF{R3DS4B3R}"
+  tags: [level-1, hackwars]
+
+# #4
+- name: "Skywalker Chronicles"
+  category: web
+  value: 150
+  type: standard
+  description: |
+    The Dark Holocron has a page meant only for a Skywalker. Broken access
+    control on the parent panel is how you get there.
+  flags:
+    - "CTF{PH4NT0MMEN4C3}"
+  tags: [level-1, hackwars]
+
+# #5
+- name: "Stored XSS in Comments"
+  category: web
+  value: 250
+  type: standard
+  description: |
+    ImperialNet filters comments before showing them - but only once, and it
+    never looks again. Deliver a payload that survives the cleanup and
+    executes anyway.
+  flags:
+    - "CTF{IMP3R1ALXSS}"
+  tags: [level-2, hackwars]
+
+# #6
+- name: "Broken Access Control: Admin Panel"
+  category: web
+  value: 250
+  type: standard
+  description: |
+    The Dark Holocron admin panel checks your stage, but not consistently.
+    Find the endpoint that forgot to check.
+  flags:
+    - "CTF{BROK3NKONTROL}"
+  tags: [level-2, hackwars]
+
+# #7
+- name: "Weak Credentials: Brute Force Simulation"
+  category: web
+  value: 250
+  type: standard
+  description: |
+    ImperialWebscraper's raw dump has 30 candidate words the Empire reuses
+    everywhere. Find the right pair and feed it into the Brute Force
+    simulator - by hand or with a script.
+  flags:
+    - "CTF{4CC3SS_6R4N73D}"
+  tags: [level-2, hackwars]
+
+# #8 - IDOR in the Dark Holocron admin panel's record viewer (?uid=), NOT
+# at /darkarchive/adminlogin. The Dark Archive login leads to #9 instead.
+- name: "Death Star Access Code"
+  category: web
+  value: 250
+  type: standard
+  description: |
+    The panel you talked your way into can pull up personnel records by id,
+    and it never checks whether the record is yours. Ask it for someone
+    else's - someone who outranks you.
+  flags:
+    - "CTF{4DM1NCON7R0L}"
+  tags: [level-2, hackwars]
+
+# #10
+- name: "Dark Holocron SQL Injection"
+  category: web
+  value: 350
+  type: standard
+  description: |
+    Darth Vader's login form builds its query with string concatenation. A
+    generic always-true payload gets you in as the first user in the table.
+    The real admin account is named nowhere - but the login sends you onward
+    addressed by whoever your query matched, so enumerate until its name
+    surfaces, then target it.
+  flags:
+    - "CTF{4DM1NP4N3L}"
+  tags: [level-3, hackwars]
+
+# #9
+- name: "Death Star Capstone"
+  category: web
+  value: 350
+  type: standard
+  description: |
+    Reachable only after chaining broken access control, SQL injection and
+    a brute-forced login across the whole app. The final flag.
+  flags:
+    - "CTF{M4Y_7H3_F0RC3_B3_W17HY0}"
+  tags: [level-3, hackwars, capstone]
+
+# #12 - delivered via ../../vulnbox/ (separate Docker image +
+# docker-compose.bonus.yml at the repo root, a single container) - not
+# part of this Flask app. SSH with the reused capstone credentials, escalate
+# via a sudo/GTFOBins misconfiguration, read the steganographic flag out of
+# an image as root.
+- name: "Beyond the Throne Room"
+  category: pwn
+  value: 450
+  type: standard
+  description: |
+    The Emperor's own login opens more doors than the throne room. Bonus,
+    optional - a completely different skill set from the rest of HackWars.
+  flags:
+    - "CTF{D34TH_ST4R_PL4NS}"
+  tags: [level-4, hackwars, bonus, pwn, forensics]
+
+# #13
+- name: "Patience, Young Padawan"
+  category: web
+  value: 50
+  type: standard
+  description: |
+    Not every reward on the Rebel homepage is found by clicking around.
+    Some things are only for those willing to wait.
+  flags:
+    - "CTF{P4T13NC3_YOUNG_P4DAW4N}"
+  tags: [level-0, hackwars, easter-egg]
+
+# #14
+- name: "ImperialNet Login Bypass"
+  category: web
+  value: 150
+  type: standard
+  description: |
+    ImperialNet's login page claims you can't reach it from outside
+    Imperial territory. Check what it's actually using to decide that.
+  flags:
+    - "CTF{TRUST_NO_H34D3R}"
+  tags: [level-1, hackwars, easter-egg, bonus]

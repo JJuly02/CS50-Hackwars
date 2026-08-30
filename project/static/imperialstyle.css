@@ -1,0 +1,48 @@
+/* ImperialNet zone theme - extends static/base.css */
+:root {
+    --accent: #3b82f6;
+    --accent-soft: rgba(59, 130, 246, 0.18);
+}
+
+.imperial-background {
+    background-image: url("/static/images/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.card:hover .card-title {
+    color: var(--accent);
+}
+
+.navbar-logo {
+    width: 44px;
+    height: 44px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.profileindex-image, .profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid var(--accent);
+    object-fit: cover;
+    display: block;
+    margin: auto;
+}
+
+.section-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    padding-bottom: 5px;
+    color: var(--accent);
+}
+
+.profile-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.card-body {
+    padding: 2rem;
+}

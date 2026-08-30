@@ -1,0 +1,25 @@
+# Optional bonus flag #12 delivery ("Beyond the Throne Room" - a riddle on
+# Palpatine's capstone panel, /darkarchive/admin, points here). A single SSH
+# box, entirely independent of project/docker-compose.yml - run this only if
+# you want the bonus.
+#
+# Connect:
+#   ssh 1mTheSenatePalp4tine@<host> -p 2201   (password: DarkTr00per_66)
+# then escalate to root (sudo -l shows the way) to read deathstarSeecret.jpg.
+#
+# The resource limits below are containment, not tuning. Exposing this port
+# means publishing a known password: SSH scanners find non-standard ports
+# within hours, and `sudo find` hands whoever logs in root *inside the
+# container*. Escape is unlikely (no --privileged, no docker socket), but
+# without limits a fork bomb or a miner in the container competes for the host
+# CPU. Only expose it on a host and network you're comfortable putting a
+# deliberately weak SSH box on.
+
+services:
+  vulnbox:
+    build: ./vulnbox
+    ports: ["2201:22"]
+    restart: unless-stopped
+    mem_limit: 512m
+    cpus: 0.5
+    pids_limit: 200

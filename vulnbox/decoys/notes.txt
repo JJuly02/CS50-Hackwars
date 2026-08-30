@@ -1,0 +1,7 @@
+Note to self (Palpatine):
+- Rotated the archive service keys again. The old dumps in /opt/imperial-archive
+  (credentials.dump, backup.sql, config.env) are dead - keys were revoked.
+- manifest.enc is the old encrypted index. I forget how many times I wrapped it.
+- IMPORTANT: the Death Star plans are NOT in the archive anymore. I moved them
+  somewhere on this box that only root can reach. Even I have to escalate now.
+- Reminder: sudo here is locked down to almost nothing - check `sudo -l`.

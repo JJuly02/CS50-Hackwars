@@ -1,0 +1,64 @@
+{% extends 'dark/layout.html' %}
+
+{% block content %}
+<div class="container d-flex flex-column align-items-center justify-content-center" style="min-height: 100vh;">
+    <div class="index-card text-center">
+        <h1 class="text-center">Galactic Empire Administration Panel</h1>
+        <div class="mt-4">
+            <h2>Overview</h2>
+            <p>Welcome to the Galactic Empire command center. Here you can manage every key aspect of our galactic dominance.</p>
+
+            <div class="mt-3">
+                <h3>Visit Statistics</h3>
+                <p>Total Archive visits: <strong>10,000</strong></p>
+                <p>Active sessions: <strong>142</strong></p>
+            </div>
+
+            <div class="mt-3">
+                <h3>Content Management</h3>
+                <p>Add, edit, or remove content from the Galactic Empire Archive here.</p>
+                <button class="btn btn-primary" onclick="alert('Write error: archive disk 97% full of propaganda.')">Add New Content</button>
+                <button class="btn btn-secondary" onclick="alert('This content is locked directly by Lord Vader. Do not ask why.')">Edit Existing Content</button>
+                <button class="btn btn-danger" onclick="alert('Deletion reported to the Inquisition. Have a nice day.')">Delete Content</button>
+            </div>
+
+            <div class="mt-3">
+                <h3>User Management</h3>
+                <p>Manage users with access to the administration panel.</p>
+                <button class="btn btn-primary" onclick="alert('System: account limit exceeded by stormtrooper clones.')">Add User</button>
+                <button class="btn btn-secondary" onclick="alert('Accidentally demoted Grand Moff Tarkin to intern.')">Edit User</button>
+                <button class="btn btn-danger" onclick="if(confirm('Really delete this user?')) alert('Not this time. Even the Empire keeps backups.')">Delete User</button>
+            </div>
+
+            <div class="mt-3">
+                <h3>Personnel Records</h3>
+                <p style="color: var(--text-muted); font-size: 0.85rem;">Preview of an Imperial personnel record. The record is loaded by its identification number from the <code>?uid=</code> parameter.</p>
+                {% if record %}
+                <div class="card" style="max-width: 32rem; margin: 0 auto; text-align: left;">
+                    <div class="card-body">
+                        <h5 class="card-title">Record #{{ record_id }}{% if is_own_record %} <span style="color: var(--text-muted); font-size: 0.8rem;">(yours)</span>{% endif %}</h5>
+                        <p class="mb-1"><strong>Name:</strong> {{ record.name }}</p>
+                        <p class="mb-1"><strong>Position:</strong> {{ record.title }}</p>
+                        <p class="mb-1"><strong>Clearance:</strong> {{ record.clearance }}</p>
+                        <p class="mb-0"><strong>Note:</strong> {{ record.note }}</p>
+                    </div>
+                </div>
+                {% else %}
+                <p class="text-danger">No record with number #{{ record_id }}.</p>
+                {% endif %}
+                <p class="mt-2" style="color: var(--text-muted); font-size: 0.8rem;">
+                    <a style="color: #FFD700" href="?uid={{ current_admin_id }}">Show my record</a>
+                </p>
+            </div>
+        </div>
+    <div>
+</div>
+
+<script type="text/javascript">
+    {% if message %}
+    var message = "{{ message }}";
+    alert(message);
+    {% endif %}
+</script>
+
+{% endblock %}

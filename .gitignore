@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Flask runtime session files (transient, regenerated per visitor)
+project/flask_session/*
+
+# OS cruft
+.DS_Store
+
+# Real secrets - never commit
+.env
+project/.env

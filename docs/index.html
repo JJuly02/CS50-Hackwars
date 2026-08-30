@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HackWars - The Vulnerabilities Strike Back</title>
+<meta name="description" content="A Star Wars-themed, deliberately vulnerable Flask web app packaged as a Capture The Flag. A Harvard CS50x final project.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#05060c; --bg2:#0a0d1a; --panel:#0e1222; --panel2:#131933;
+    --ink:#e8ecfb; --muted:#9aa3c7; --faint:#6b7299;
+    --gold:#ffd24a; --blue:#4db5ff; --green:#79f27a; --red:#ff5d5d;
+    --line:rgba(255,255,255,.09);
+    --display:'Orbitron',system-ui,sans-serif;
+    --body:'Inter',system-ui,-apple-system,sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;font-family:var(--body);color:var(--ink);background:var(--bg);
+    line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  /* ---- starfield ---- */
+  .stars,.stars2,.stars3{position:fixed;inset:0;z-index:-2;pointer-events:none}
+  .stars{background:radial-gradient(1px 1px at 20% 30%,#fff,transparent),radial-gradient(1px 1px at 70% 60%,#fff,transparent),radial-gradient(1px 1px at 40% 80%,#dfe,transparent),radial-gradient(1.5px 1.5px at 90% 20%,#fff,transparent),radial-gradient(1px 1px at 55% 15%,#fff,transparent),radial-gradient(1px 1px at 12% 70%,#fff,transparent);background-repeat:repeat;background-size:600px 600px;opacity:.55;animation:drift 240s linear infinite}
+  .stars2{background:radial-gradient(1px 1px at 15% 45%,#9db4ff,transparent),radial-gradient(1px 1px at 65% 25%,#fff,transparent),radial-gradient(1px 1px at 85% 75%,#ffe9b0,transparent),radial-gradient(1px 1px at 35% 55%,#fff,transparent);background-repeat:repeat;background-size:400px 400px;opacity:.35;animation:drift 160s linear infinite reverse}
+  .glow{position:fixed;z-index:-1;pointer-events:none;filter:blur(80px);opacity:.5}
+  .glow.a{top:-160px;right:-120px;width:520px;height:520px;background:radial-gradient(circle,rgba(77,181,255,.5),transparent 60%)}
+  .glow.b{bottom:-200px;left:-140px;width:560px;height:560px;background:radial-gradient(circle,rgba(255,210,74,.35),transparent 60%)}
+  @keyframes drift{from{background-position:0 0}to{background-position:600px 1200px}}
+  @media (prefers-reduced-motion:reduce){.stars,.stars2{animation:none}}
+
+  .wrap{max-width:1060px;margin:0 auto;padding:0 22px}
+  a{color:var(--blue);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  /* ---- hero ---- */
+  header.hero{position:relative;padding:104px 0 72px;text-align:center}
+  .badge{display:inline-flex;align-items:center;gap:8px;padding:7px 15px;border:1px solid var(--line);border-radius:999px;background:rgba(255,210,74,.06);color:var(--gold);font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+  .badge svg{width:15px;height:15px}
+  h1{font-family:var(--display);font-weight:900;letter-spacing:.02em;line-height:1.05;margin:26px 0 6px;font-size:clamp(34px,7vw,68px);color:#fff;text-shadow:0 0 34px rgba(255,210,74,.28)}
+  h1 .sub{display:block;font-size:clamp(15px,2.6vw,24px);font-weight:600;letter-spacing:.42em;color:var(--gold);margin-top:12px;text-shadow:none}
+  .tagline{max-width:640px;margin:22px auto 0;color:var(--muted);font-size:clamp(15px,2vw,18px)}
+  .flagchip{display:inline-block;margin-top:26px;font-family:var(--mono);font-size:14px;color:var(--green);border:1px dashed rgba(121,242,122,.4);border-radius:8px;padding:8px 14px;background:rgba(121,242,122,.05)}
+  .flagchip b{color:#fff}
+  .cta{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:34px}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:13px 22px;border-radius:11px;font-weight:600;font-size:15px;border:1px solid var(--line);transition:transform .12s ease,border-color .2s,background .2s}
+  .btn svg{width:18px;height:18px}
+  .btn:hover{text-decoration:none;transform:translateY(-2px)}
+  .btn.primary{background:linear-gradient(180deg,#ffe08a,#ffcb33);color:#241b00;border-color:transparent}
+  .btn.primary:hover{background:linear-gradient(180deg,#ffe8a6,#ffd451)}
+  .btn.ghost{background:rgba(255,255,255,.03);color:var(--ink)}
+  .btn.ghost:hover{border-color:var(--blue);background:rgba(77,181,255,.08)}
+
+  /* ---- sections ---- */
+  section{padding:56px 0;border-top:1px solid var(--line)}
+  .eyebrow{font-family:var(--display);font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin:0 0 10px}
+  h2{font-family:var(--display);font-weight:700;font-size:clamp(23px,4vw,34px);margin:0 0 8px;color:#fff}
+  .lead{color:var(--muted);max-width:760px;font-size:16.5px}
+  .lead code{font-family:var(--mono);font-size:.9em;color:var(--gold);background:rgba(255,210,74,.08);padding:1px 6px;border-radius:5px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px;margin-top:30px}
+  .card{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:14px;padding:20px;transition:transform .15s ease,border-color .2s}
+  .card:hover{transform:translateY(-3px);border-color:rgba(77,181,255,.4)}
+  .card .k{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;color:var(--faint);text-transform:uppercase}
+  .card h3{margin:8px 0 6px;font-size:17px;color:#fff}
+  .card p{margin:0;color:var(--muted);font-size:14.5px}
+  .dot{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:8px;vertical-align:middle}
+
+  .split{display:grid;grid-template-columns:1.05fr .95fr;gap:34px;align-items:start}
+  @media(max-width:780px){.split{grid-template-columns:1fr}}
+  ul.check{list-style:none;padding:0;margin:18px 0 0}
+  ul.check li{position:relative;padding:7px 0 7px 30px;color:var(--muted)}
+  ul.check li::before{content:"";position:absolute;left:0;top:13px;width:14px;height:14px;border-radius:4px;background:linear-gradient(135deg,var(--blue),var(--gold))}
+  ul.check b{color:var(--ink)}
+
+  pre{background:#080b16;border:1px solid var(--line);border-radius:12px;padding:18px 20px;overflow-x:auto;font-family:var(--mono);font-size:13.5px;color:#cfe0ff;line-height:1.7}
+  pre .c{color:var(--faint)}
+  pre .p{color:var(--gold)}
+
+  .tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+  .tag{font-family:var(--mono);font-size:13px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:6px 13px;background:rgba(255,255,255,.02)}
+
+  .note{margin-top:26px;background:rgba(77,181,255,.05);border:1px solid rgba(77,181,255,.22);border-left:3px solid var(--blue);border-radius:10px;padding:15px 18px;color:var(--muted);font-size:14.5px}
+
+  footer{border-top:1px solid var(--line);padding:44px 0 60px;text-align:center;color:var(--faint);font-size:14px}
+  footer .author{color:var(--ink);font-weight:600}
+  footer a{color:var(--muted)}
+  .warn{margin-top:14px;font-size:12.7px;color:var(--faint);max-width:620px;margin-left:auto;margin-right:auto}
+  .saber{height:3px;width:min(560px,80%);margin:0 auto;border-radius:3px;background:linear-gradient(90deg,transparent,var(--red),#fff,var(--blue),transparent);box-shadow:0 0 14px rgba(77,181,255,.5)}
+</style>
+</head>
+<body>
+<div class="stars"></div>
+<div class="stars2"></div>
+<div class="glow a"></div>
+<div class="glow b"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+      Harvard CS50x · Final Project
+    </span>
+    <h1>HackWars<span class="sub">The Vulnerabilities Strike Back</span></h1>
+    <p class="tagline">A Star Wars-themed, deliberately vulnerable web application - a hands-on Capture&nbsp;The&nbsp;Flag where you hack your way from the Rebel base to the Emperor's Dark Archive.</p>
+    <div class="flagchip">Objective: recover all 14 flags &nbsp;·&nbsp; format <b>CTF{&hellip;}</b></div>
+    <div class="cta">
+      <a class="btn primary" href="https://github.com/JJuly02/CS50-Hackwars">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.3-1.8-1.3-1.8-1.1-.7 0-.7 0-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17 4.7 18 5 18 5c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg>
+        View on GitHub
+      </a>
+      <a class="btn ghost" href="https://youtu.be/GNPCI4utMjk">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        Watch the demo
+      </a>
+      <a class="btn ghost" href="#run">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17l6-6-6-6M12 19h8"/></svg>
+        Run it yourself
+      </a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <p class="eyebrow">The Mission</p>
+    <h2>What it is</h2>
+    <p class="lead">HackWars is a single, story-driven Flask web app riddled with realistic security holes. There's no account system - every visitor gets their own anonymous run through the galaxy, unlocking pages in sequence as they exploit each vulnerability and collect the flag hidden behind it. It was built as my final project for <b>Harvard's CS50x</b> and later grown into a full 14-flag CTF, complete with a separate privilege-escalation bonus box.</p>
+    <div class="note">Built entirely by me as my CS50x program-completion project. It's intentionally insecure by design - meant to be run locally or on an isolated host for learning and CTF play, never exposed on a network you care about.</div>
+  </div>
+</section>
+
+<section id="challenges">
+  <div class="wrap">
+    <p class="eyebrow">The Arsenal</p>
+    <h2>Vulnerabilities to exploit</h2>
+    <p class="lead">Fourteen flags spanning the web-security classics, ramped from level 0 to 5 - each one a different technique, all woven into one continuous Star Wars narrative.</p>
+    <div class="grid">
+      <div class="card"><div class="k"><span class="dot" style="background:var(--green)"></span>Recon</div><h3>Information Disclosure</h3><p>Secrets hidden in plain sight - page source, comments, and a leaked credential dump.</p></div>
+      <div class="card"><div class="k"><span class="dot" style="background:var(--gold)"></span>Injection</div><h3>Stored XSS</h3><p>Slip a script past a naive filter into the ImperialNet comment wall and watch it fire.</p></div>
+      <div class="card"><div class="k"><span class="dot" style="background:var(--red)"></span>Injection</div><h3>SQL Injection</h3><p>Several layers, from a classic auth bypass to a targeted, column-aware payload.</p></div>
+      <div class="card"><div class="k"><span class="dot" style="background:var(--blue)"></span>Access</div><h3>Broken Access Control</h3><p>Reach the admin panel with no credentials, then walk records by ID (IDOR).</p></div>
+      <div class="card"><div class="k"><span class="dot" style="background:var(--gold)"></span>Trust</div><h3>Header Spoofing</h3><p>An <code style="font-family:var(--mono);color:var(--gold)">X-Forwarded-For</code> the server trusts a little too much.</p></div>
+      <div class="card"><div class="k"><span class="dot" style="background:var(--green)"></span>Crypto</div><h3>Caesar Cipher</h3><p>An encoded flag that only gives itself up once you shift it back.</p></div>
+      <div class="card"><div class="k"><span class="dot" style="background:var(--red)"></span>Bonus · pwn</div><h3>Privesc → Steganography</h3><p>SSH into Palpatine's terminal, escalate via a <code style="font-family:var(--mono);color:var(--gold)">sudo</code> misconfig (GTFOBins), and dig a flag out of an image as root.</p></div>
+      <div class="card"><div class="k"><span class="dot" style="background:var(--blue)"></span>Patience</div><h3>Easter Eggs</h3><p>Rewards for reading to the very last line of the opening crawl.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="tech">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow">Under the Hood</p>
+      <h2>How it's built</h2>
+      <p class="lead">A deliberately compact stack - the point is the vulnerabilities, not the framework. Everything runs from a single container with no shared state, so it's trivial to stand up.</p>
+      <div class="tags">
+        <span class="tag">Python</span><span class="tag">Flask</span><span class="tag">Jinja2</span>
+        <span class="tag">gunicorn</span><span class="tag">SQLite</span><span class="tag">Docker</span>
+        <span class="tag">HTML / CSS</span><span class="tag">Linux / SSH</span>
+      </div>
+      <ul class="check">
+        <li><b>Story-driven & stateful</b> - sequential unlocks tracked per browser via signed-cookie sessions.</li>
+        <li><b>Single-container deploy</b> - no database writes, no session store, so it scales sideways for free.</li>
+        <li><b>Bonus vulnbox</b> - a separate SSH image for the privesc + stego capstone.</li>
+      </ul>
+    </div>
+    <div id="run">
+      <p class="eyebrow">Quick Start</p>
+      <h2>Run it</h2>
+      <pre><span class="c"># clone and launch the app</span>
+git clone https://github.com/JJuly02/CS50-Hackwars
+cd CS50-Hackwars/<span class="p">project</span>
+docker compose up --build
+<span class="c"># → open http://localhost:8000</span>
+
+<span class="c"># optional: the bonus SSH box (#12)</span>
+cd ..
+docker compose -f docker-compose.bonus.yml up --build
+<span class="c"># → ssh ...@localhost -p 2201</span></pre>
+      <p class="lead" style="margin-top:14px;font-size:14.5px">Prefer bare Python? <code>pip install -r requirements.txt</code> then <code>flask run</code>. Full challenge catalog &amp; solutions live in the repo.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="saber"></div>
+  <p style="margin-top:26px">Built by <span class="author">Jakub Lipiec</span> · Harvard CS50x final project · <a href="https://github.com/JJuly02/CS50-Hackwars">github.com/JJuly02/CS50-Hackwars</a></p>
+  <p class="warn">The core project was written by me for CS50x. Some later deployment and reliability (flakiness) hardening for the public release was done with AI assistance. Star Wars is the property of its respective owners - this is a non-commercial, educational fan project.</p>
+  <p style="margin-top:18px;color:var(--faint)">May the Secure Code be with you.</p>
+</footer>
+</body>
+</html>

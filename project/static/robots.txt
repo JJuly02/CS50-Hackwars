@@ -1,0 +1,43 @@
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: OAI-SearchBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: *
+Allow: /
+# internal - keep unlisted, not for indexing
+Disallow: /imperialnet/Tenaq-Vadhvfvgbe
+# classified: full flag manifest (automated export) - do not index
+Disallow: /imperial-archive
+# leftover backups / internal endpoints - do not index
+Disallow: /config.bak
+Disallow: /.env
+Disallow: /.git/
+Disallow: /backup/
+Disallow: /api/keys
+Disallow: /debug

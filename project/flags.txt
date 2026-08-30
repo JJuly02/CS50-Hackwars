@@ -1,0 +1,16 @@
+-------------------"CTF{4DM1NP4N3L}", --- admin panel
+-------------------"CTF{BROK3NKONTROL}", --- dostanie sie do admin panel poprzez broken acces control
+-------------------"CTF{IMP3R1ALXSS}", -- wykonanie xss na stronie
+-------------------"CTF{4CC3SS_6R4N73D}", --- darkarchive jak sie wchodzi
+-------------------"CTF{1MP3R1AL}", --- flaga imperial ukryta w stronie w komentarzu
+-------------------"CTF{M4Y_7H3_F0RC3_B3_W17HY0}", ----final flag na samym koncu
+-------------------"CTF{PH4NT0MMEN4C3}", --- anakin skywalker side
+-------------------"CTF{17S_4_TR4P}", --- przekierowuje do youtube na rickrolla
+-------------------"CTF{R3DS4B3R}", --- imperialnet
+-------------------"CTF{4DM1NCON7R0L}" --- panel gwiazdy smierci
+-------------------"CTF{R3B3L10N}" ---- strona rebel
+-------------------"CTF{P4T13NC3_YOUNG_P4DAW4N}" --- nagroda za doczytanie crawla do konca na stronie glownej
+-------------------"CTF{D34TH_ST4R_PL4NS}" --- bonus flaga #12, stego w deathstarSeecret.jpg (dostarczenie jeszcze niezbudowane)
+-------------------"CTF{TRUST_NO_H34D3R}" --- flaga #14, easter egg na /imperialnet/login, spoofing X-Forwarded-For
+
+zapisać lokalizacje

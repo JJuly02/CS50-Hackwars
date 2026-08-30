@@ -1,0 +1,11 @@
+ls -la
+cat notes.txt
+cd /opt/imperial-archive
+ls -la
+head credentials.dump
+grep -i death credentials.dump
+cat config.env
+base64 -d manifest.enc | head
+sudo -l
+find / -name 'deathstar*' 2>/dev/null
+cd ~
